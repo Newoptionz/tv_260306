@@ -2,6 +2,8 @@
 __pycache__/
 *.pyc
 data/raw/
+data/orig/
 data/out/
 .env
 *.sqlite
+*.parquet
