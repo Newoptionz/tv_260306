@@ -152,7 +152,7 @@ def run(csv_path: Path, out_dir: Path, signals: str) -> Path:
         sys.exit(0)
 
     trades = add_mae_mfe(trades, df)
-    trades["entry_dt"]    = df.loc[trades["entry_bar_i"].astype(int), "dt"].values
+    trades["entry_dt"] = df.loc[trades["entry_bar_i"].astype(int), "dt"].dt.strftime("%Y-%m-%d %H:%M:%S").values
     trades["time_bucket"] = df.loc[trades["entry_bar_i"].astype(int), "time_bucket"].values
 
     # Baseline: tick-scaled, no data snooping

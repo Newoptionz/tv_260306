@@ -208,8 +208,9 @@ def preprocess_tv_export(df: pd.DataFrame) -> pd.DataFrame:
 
 def _time_bucket(ts: pd.Timestamp) -> str:
     h = ts.hour
-    if   7  <= h < 12: return "a_MORNING_07-12"
-    elif 12 <= h < 18: return "b_MIDDAY_12-18"
-    elif 18 <= h < 20: return "c_EVENING_18-20"
-    elif 20 <= h < 24: return "d_20-24_US_OPEN"
-    else:              return "e_OVERNIGHT_00-05"
+    if    0 <= h <  5: return "a_NIGHT_00-05"
+    elif  5 <= h <  7: return "b_PREMARKET_05-07"
+    elif  7 <= h < 12: return "c_MORNING_07-12"
+    elif 12 <= h < 18: return "d_MIDDAY_12-18"
+    elif 18 <= h < 20: return "e_EVENING_18-20"
+    elif 20 <= h < 24: return "f_US_OPEN_20-24"
